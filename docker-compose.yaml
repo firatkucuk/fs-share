@@ -1,0 +1,28 @@
+version: '3.5'
+
+services:
+    app-a:
+        container_name: afra-app-a
+        image: afra-app-a:latest
+        environment:
+            - STORAGE_PATH=/storage
+        volumes:
+            - "fs-share:/storage"
+        ports:
+            - "8081:8081"
+
+    app-b:
+        container_name: afra-app-b
+        image: afra-app-b:latest
+        environment:
+            - STORAGE_PATH=/storage
+        volumes:
+            - "fs-share:/storage"
+        ports:
+            - "8082:8082"
+
+volumes:
+    fs-share:
+
+networks:
+    fs-share:
